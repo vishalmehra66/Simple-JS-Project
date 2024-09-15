@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 260px;
+        }
+
+        #box:hover {
+            background-color: rgb(218, 161, 218);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="raw">To do list for Today</h1>
+        <br>
+        <div class="row">
+            <form>
+                <div class="input-group">
+                    <input type="text" placeholder="To Do Items" id="box">
+                </div>
+                <br>
+                <div class="form-group">
+                    <input type="button" value="Add Item" onclick="add_items()">
+                </div>
+            </form>
+        </div>
+        <div class="row">
+            <ul id="list_items"></ul>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

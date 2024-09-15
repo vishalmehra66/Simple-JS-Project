@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do List</title>
+  <style>
+    /* Your CSS styles here */
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .input-group, .list-group {
+      margin-bottom: 10px;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .list-group {
+      list-style: none;
+      padding: 0;
+    }
+
+    .list-group-item {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 5px;
+    }
+    
+    .list-group-item.completed {
+        text-decoration: line-through;
+        color: #888;
+    }
+    
+    .btn {
+        padding: 5px 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 5px;
+        /* margin-left: 45%; */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>To-Do List</h1>
+    <div class="input-group">
+      <input type="text" id="todoInput" placeholder="Enter a task">
+      <button class="btn" onclick="addItem()">Add</button>
+    </div>
+    <ul id="taskList" class="list-group"></ul>
+  </div>
+
+  <script>
+    const todoInput = document.getElementById('todoInput');
+    const taskList = document.getElementById('taskList');
+
+    function addItem() {
+      const taskText = todoInput.value;
+      if (taskText.trim() !== '') {
+        const listItem = document.createElement('li');
+        listItem.classList.add('list-group-item');
+        listItem.textContent = taskText;
+
+        const completeButton = document.createElement('button');
+        completeButton.textContent = 'Complete';
+        completeButton.classList.add('btn', 'btn-sm');
+        completeButton.addEventListener('click', () => {
+          listItem.classList.toggle('completed');
+        });
+
+        const removeButton = document.createElement('button');
+        removeButton.textContent = 'Remove';
+        removeButton.classList.add('btn', 'btn-sm', 'btn-danger');
+        removeButton.addEventListener('click', () => {
+          taskList.removeChild(listItem);
+        });
+
+        listItem.appendChild(completeButton);
+        listItem.appendChild(removeButton);
+        taskList.appendChild(listItem);
+
+        todoInput.value = '';
+      }
+    }
+  </script>
+</body>
+</html>
